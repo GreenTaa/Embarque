@@ -6,7 +6,7 @@ sudo apt-get install -y openmpi-bin libopenmpi-dev
 sudo apt-get install -y libatlas-base-dev
 python3 -m pip install -U six wheel mock
 
-wget https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqa3Q2VHR0dm1ZaFJmV3dDdm85cGVvTWlwWERzQXxBQ3Jtc0tsQlZLeDJudk1FcU5SN3BHbnhPYzBYNzlfWkMtcWYzSXR0TVM1elNkTTVpNzBQakhFRVVCUHAtV0tNdkl4YnhtSGlMdVBBNnhZVk5DWWUwWlNsOFFjaVBGT2RqM05MOC1LMDV2ZG5CUXNVVHc4N01OSQ&q=https%3A%2F%2Fgithub.com%2Flhelontra%2Ftensorflow-on-arm%2Freleases%2Fdownload%2Fv2.0.0%2Ftensorflow-2.0.0-cp37-none-linux_armv7l.whl
+
 python3 -m pip uninstall tensorflow
 python3 -m pip install tensorflow-2.0.0-cp37-none-linux_armv7l.whl
 
