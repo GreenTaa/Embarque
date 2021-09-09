@@ -30,7 +30,7 @@ U 1 1 610EC3CE
 P 1450 2200
 F 0 "C2" H 1550 2300 50  0000 L CNN
 F 1 "23pF" H 1500 2150 50  0000 L CNN
-F 2 "Capacitor_THT:C_Disc_D4.3mm_W1.9mm_P5.00mm" H 1450 2200 50  0001 C CNN
+F 2 "Capacitor_THT:C_Disc_D3.0mm_W2.0mm_P2.50mm" H 1450 2200 50  0001 C CNN
 F 3 "~" H 1450 2200 50  0001 C CNN
 	1    1450 2200
 	1    0    0    -1  
@@ -41,7 +41,7 @@ U 1 1 610EC748
 P 1150 2200
 F 0 "C1" H 1000 2300 50  0000 L CNN
 F 1 "23pF" H 950 2150 50  0000 L CNN
-F 2 "Capacitor_THT:C_Disc_D4.3mm_W1.9mm_P5.00mm" H 1150 2200 50  0001 C CNN
+F 2 "Capacitor_THT:C_Disc_D3.0mm_W2.0mm_P2.50mm" H 1150 2200 50  0001 C CNN
 F 3 "~" H 1150 2200 50  0001 C CNN
 	1    1150 2200
 	1    0    0    -1  
@@ -256,7 +256,7 @@ U 1 1 611D60DC
 P 1100 5250
 F 0 "J1" H 1018 4925 50  0000 C CNN
 F 1 "Input Voltage 12V" H 1018 5016 50  0000 C CNN
-F 2 "TerminalBlock_Altech:Altech_AK300_1x02_P5.00mm_45-Degree" H 1100 5250 50  0001 C CNN
+F 2 "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2_1x02_P5.00mm_Horizontal" H 1100 5250 50  0001 C CNN
 F 3 "~" H 1100 5250 50  0001 C CNN
 	1    1100 5250
 	-1   0    0    1   
@@ -360,7 +360,7 @@ $Comp
 L Device:CP_Small C4
 U 1 1 611E80CA
 P 7700 1250
-F 0 "C4" H 7500 1250 50  0000 L CNN
+F 0 "C4" V 7500 1250 50  0000 L CNN
 F 1 "100uF" H 7400 1150 50  0000 L CNN
 F 2 "Capacitor_SMD:CP_Elec_4x5.3" H 7700 1250 50  0001 C CNN
 F 3 "~" H 7700 1250 50  0001 C CNN
@@ -495,7 +495,7 @@ IR_Sen
 Text GLabel 3200 1500 2    50   Input ~ 0
 PWM1
 Text GLabel 3200 3700 2    50   Input ~ 0
-PB1
+Solenoid
 NoConn ~ 3200 2300
 Wire Notes Line
 	7100 600  11050 600 
@@ -563,7 +563,7 @@ F 3 "~" H 4850 3800 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 Text GLabel 4300 3800 0    50   Input ~ 0
-PB1
+Solenoid
 $Comp
 L power:GND #PWR0119
 U 1 1 61220A2D
@@ -588,10 +588,10 @@ Wire Notes Line
 Text Notes 3900 4400 0    50   ~ 0
 Solenoid Circuit
 $Comp
-L Connector:Screw_Terminal_01x02 J5
+L Connector:Screw_Terminal_01x02 solenoid1
 U 1 1 612386C2
 P 5850 3350
-F 0 "J5" H 5930 3342 50  0000 L CNN
+F 0 "solenoid1" H 5930 3342 50  0000 L CNN
 F 1 "solenoid" H 5930 3251 50  0000 L CNN
 F 2 "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2_1x02_P5.00mm_Horizontal" H 5850 3350 50  0001 C CNN
 F 3 "~" H 5850 3350 50  0001 C CNN
@@ -599,21 +599,21 @@ F 3 "~" H 5850 3350 50  0001 C CNN
 	1    0    0    1   
 $EndComp
 $Comp
-L Connector:Screw_Terminal_01x03 J6
+L Connector:Screw_Terminal_01x03 PWM1
 U 1 1 612391EC
 P 9200 3700
-F 0 "J6" H 9280 3742 50  0000 L CNN
-F 1 "M1" H 9280 3651 50  0000 L CNN
-F 2 "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-3-5.08_1x03_P5.08mm_Horizontal" H 9200 3700 50  0001 C CNN
+F 0 "PWM1" H 9280 3742 50  0000 L CNN
+F 1 "PWM1" H 9280 3651 50  0000 L CNN
+F 2 "Connector_JST:JST_EH_B3B-EH-A_1x03_P2.50mm_Vertical" H 9200 3700 50  0001 C CNN
 F 3 "~" H 9200 3700 50  0001 C CNN
 	1    9200 3700
 	1    0    0    -1  
 $EndComp
 $Comp
-L Connector_Generic:Conn_01x03 J4
+L Connector_Generic:Conn_01x03 Sharp1
 U 1 1 61239E42
 P 7850 4250
-F 0 "J4" H 7930 4292 50  0000 L CNN
+F 0 "Sharp1" H 7930 4292 50  0000 L CNN
 F 1 "Sharp Sensor" H 7930 4201 50  0000 L CNN
 F 2 "Connector_JST:JST_EH_B3B-EH-A_1x03_P2.50mm_Vertical" H 7850 4250 50  0001 C CNN
 F 3 "~" H 7850 4250 50  0001 C CNN
@@ -738,10 +738,10 @@ Wire Wire Line
 	8500 1650 9150 1650
 Connection ~ 8500 1550
 $Comp
-L Connector_Generic:Conn_01x02 J7
+L Connector_Generic:Conn_01x02 UART1
 U 1 1 612C10FB
 P 9250 4300
-F 0 "J7" H 9330 4292 50  0000 L CNN
+F 0 "UART1" H 9330 4292 50  0000 L CNN
 F 1 "UART" H 9330 4201 50  0000 L CNN
 F 2 "Connector_JST:JST_EH_B2B-EH-A_1x02_P2.50mm_Vertical" H 9250 4300 50  0001 C CNN
 F 3 "~" H 9250 4300 50  0001 C CNN
@@ -855,10 +855,10 @@ RX_Rasp
 Text GLabel 7550 3650 0    50   Input ~ 0
 TX_Rasp
 $Comp
-L Connector_Generic:Conn_01x04 J3
+L Connector_Generic:Conn_01x04 UART_to_raspberry1
 U 1 1 612D6C6C
 P 7850 3650
-F 0 "J3" H 7930 3642 50  0000 L CNN
+F 0 "UART_to_raspberry1" H 7930 3642 50  0000 L CNN
 F 1 "UART to raspberry" H 7930 3551 50  0000 L CNN
 F 2 "Connector_JST:JST_EH_S4B-EH_1x04_P2.50mm_Horizontal" H 7850 3650 50  0001 C CNN
 F 3 "~" H 7850 3650 50  0001 C CNN
@@ -926,10 +926,10 @@ Wire Notes Line
 Wire Notes Line
 	7100 3350 7100 6450
 $Comp
-L Connector_Generic:Conn_01x03 J8
+L Connector_Generic:Conn_01x03 PWM3
 U 1 1 613D0FC0
 P 7850 4800
-F 0 "J8" H 7930 4842 50  0000 L CNN
+F 0 "PWM3" H 7930 4842 50  0000 L CNN
 F 1 "PWM3" H 7930 4751 50  0000 L CNN
 F 2 "Connector_JST:JST_EH_B3B-EH-A_1x03_P2.50mm_Vertical" H 7850 4800 50  0001 C CNN
 F 3 "~" H 7850 4800 50  0001 C CNN
@@ -937,10 +937,10 @@ F 3 "~" H 7850 4800 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Connector_Generic:Conn_01x03 J11
+L Connector_Generic:Conn_01x03 PWM2
 U 1 1 613D12AA
 P 9250 4750
-F 0 "J11" H 9330 4792 50  0000 L CNN
+F 0 "PWM2" H 9330 4792 50  0000 L CNN
 F 1 "PWM2" H 9330 4701 50  0000 L CNN
 F 2 "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-3-5.08_1x03_P5.08mm_Horizontal" H 9250 4750 50  0001 C CNN
 F 3 "~" H 9250 4750 50  0001 C CNN
@@ -948,10 +948,10 @@ F 3 "~" H 9250 4750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Connector_Generic:Conn_01x03 J9
+L Connector_Generic:Conn_01x03 PWM4
 U 1 1 613D1998
 P 7850 5300
-F 0 "J9" H 7930 5342 50  0000 L CNN
+F 0 "PWM4" H 7930 5342 50  0000 L CNN
 F 1 "PWM4" H 7930 5251 50  0000 L CNN
 F 2 "Connector_JST:JST_EH_B3B-EH-A_1x03_P2.50mm_Vertical" H 7850 5300 50  0001 C CNN
 F 3 "~" H 7850 5300 50  0001 C CNN
@@ -959,10 +959,10 @@ F 3 "~" H 7850 5300 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Connector_Generic:Conn_01x03 J12
+L Connector_Generic:Conn_01x03 ANALOG2
 U 1 1 613D1E17
 P 9250 5800
-F 0 "J12" H 9330 5842 50  0000 L CNN
+F 0 "ANALOG2" H 9330 5842 50  0000 L CNN
 F 1 "ANALOG" H 9330 5751 50  0000 L CNN
 F 2 "Connector_JST:JST_EH_B3B-EH-A_1x03_P2.50mm_Vertical" H 9250 5800 50  0001 C CNN
 F 3 "~" H 9250 5800 50  0001 C CNN
@@ -1072,10 +1072,10 @@ $EndComp
 Text GLabel 9050 5800 0    50   Input ~ 0
 A2
 $Comp
-L Connector_Generic:Conn_01x03 J10
+L Connector_Generic:Conn_01x03 ANALOG1
 U 1 1 6131D88F
 P 7850 5850
-F 0 "J10" H 7930 5892 50  0000 L CNN
+F 0 "ANALOG1" H 7930 5892 50  0000 L CNN
 F 1 "ANALOG" H 7930 5801 50  0000 L CNN
 F 2 "Connector_JST:JST_EH_B3B-EH-A_1x03_P2.50mm_Vertical" H 7850 5850 50  0001 C CNN
 F 3 "~" H 7850 5850 50  0001 C CNN
@@ -1122,10 +1122,10 @@ F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/ATmega328_P%20AVR%20MCU%20w
 	1    0    0    -1  
 $EndComp
 $Comp
-L Connector_Generic:Conn_01x03 J13
+L Connector_Generic:Conn_01x03 DIGITAL1
 U 1 1 6134BE32
 P 9250 5250
-F 0 "J13" H 9330 5292 50  0000 L CNN
+F 0 "DIGITAL1" H 9330 5292 50  0000 L CNN
 F 1 "DIGITAL" H 9330 5201 50  0000 L CNN
 F 2 "Connector_JST:JST_EH_B3B-EH-A_1x03_P2.50mm_Vertical" H 9250 5250 50  0001 C CNN
 F 3 "~" H 9250 5250 50  0001 C CNN
@@ -1157,10 +1157,10 @@ $EndComp
 Text GLabel 3200 3300 2    50   Input ~ 0
 DP2
 $Comp
-L Connector_Generic:Conn_01x03 J14
+L Connector_Generic:Conn_01x03 DIGITAL2
 U 1 1 61404576
 P 10300 3700
-F 0 "J14" H 10380 3742 50  0000 L CNN
+F 0 "DIGITAL2" H 10380 3742 50  0000 L CNN
 F 1 "DIGITAL" H 10380 3651 50  0000 L CNN
 F 2 "Connector_JST:JST_EH_B3B-EH-A_1x03_P2.50mm_Vertical" H 10300 3700 50  0001 C CNN
 F 3 "~" H 10300 3700 50  0001 C CNN
@@ -1168,10 +1168,10 @@ F 3 "~" H 10300 3700 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Connector_Generic:Conn_01x03 J15
+L Connector_Generic:Conn_01x03 DIGITAL3
 U 1 1 61404C6A
 P 10300 4200
-F 0 "J15" H 10380 4242 50  0000 L CNN
+F 0 "DIGITAL3" H 10380 4242 50  0000 L CNN
 F 1 "DIGITAL" H 10380 4151 50  0000 L CNN
 F 2 "Connector_JST:JST_EH_B3B-EH-A_1x03_P2.50mm_Vertical" H 10300 4200 50  0001 C CNN
 F 3 "~" H 10300 4200 50  0001 C CNN
@@ -1179,10 +1179,10 @@ F 3 "~" H 10300 4200 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Connector_Generic:Conn_01x03 J16
+L Connector_Generic:Conn_01x03 DIGITAL4
 U 1 1 61404F7F
 P 10300 4800
-F 0 "J16" H 10380 4842 50  0000 L CNN
+F 0 "DIGITAL4" H 10380 4842 50  0000 L CNN
 F 1 "DIGITAL" H 10380 4751 50  0000 L CNN
 F 2 "Connector_JST:JST_EH_B3B-EH-A_1x03_P2.50mm_Vertical" H 10300 4800 50  0001 C CNN
 F 3 "~" H 10300 4800 50  0001 C CNN
@@ -1190,10 +1190,10 @@ F 3 "~" H 10300 4800 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Connector_Generic:Conn_01x03 J17
+L Connector_Generic:Conn_01x03 ANALOG3
 U 1 1 614052FF
 P 10300 5300
-F 0 "J17" H 10380 5342 50  0000 L CNN
+F 0 "ANALOG3" H 10380 5342 50  0000 L CNN
 F 1 "ANALOG" H 10380 5251 50  0000 L CNN
 F 2 "Connector_JST:JST_EH_B3B-EH-A_1x03_P2.50mm_Vertical" H 10300 5300 50  0001 C CNN
 F 3 "~" H 10300 5300 50  0001 C CNN
@@ -1201,10 +1201,10 @@ F 3 "~" H 10300 5300 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Connector_Generic:Conn_01x03 J18
+L Connector_Generic:Conn_01x03 ANALOG4
 U 1 1 61405652
 P 10300 5850
-F 0 "J18" H 10380 5892 50  0000 L CNN
+F 0 "ANALOG4" H 10380 5892 50  0000 L CNN
 F 1 "ANALOG" H 10380 5801 50  0000 L CNN
 F 2 "Connector_JST:JST_EH_B3B-EH-A_1x03_P2.50mm_Vertical" H 10300 5850 50  0001 C CNN
 F 3 "~" H 10300 5850 50  0001 C CNN
@@ -1247,12 +1247,12 @@ $EndComp
 $Comp
 L power:+5V #PWR0130
 U 1 1 61406F0C
-P 10100 5200
-F 0 "#PWR0130" H 10100 5050 50  0001 C CNN
-F 1 "+5V" H 10115 5373 50  0000 C CNN
-F 2 "" H 10100 5200 50  0001 C CNN
-F 3 "" H 10100 5200 50  0001 C CNN
-	1    10100 5200
+P 10100 5400
+F 0 "#PWR0130" H 10100 5250 50  0001 C CNN
+F 1 "+5V" H 10115 5573 50  0000 C CNN
+F 2 "" H 10100 5400 50  0001 C CNN
+F 3 "" H 10100 5400 50  0001 C CNN
+	1    10100 5400
 	0    -1   -1   0   
 $EndComp
 $Comp
@@ -1302,12 +1302,12 @@ $EndComp
 $Comp
 L power:GND #PWR0135
 U 1 1 61414BB8
-P 10100 5400
-F 0 "#PWR0135" H 10100 5150 50  0001 C CNN
-F 1 "GND" V 10105 5272 50  0000 R CNN
-F 2 "" H 10100 5400 50  0001 C CNN
-F 3 "" H 10100 5400 50  0001 C CNN
-	1    10100 5400
+P 10100 5200
+F 0 "#PWR0135" H 10100 4950 50  0001 C CNN
+F 1 "GND" V 10105 5072 50  0000 R CNN
+F 2 "" H 10100 5200 50  0001 C CNN
+F 3 "" H 10100 5200 50  0001 C CNN
+	1    10100 5200
 	0    1    1    0   
 $EndComp
 $Comp
@@ -1499,9 +1499,9 @@ Wire Notes Line
 	3850 6550 3850 4750
 Text Notes 3850 6550 0    50   ~ 0
 lOGIC LEVEL SHIIFTER\n
-Text GLabel 8950 4200 0    50   Input ~ 0
-RX
 Text GLabel 8950 4300 0    50   Input ~ 0
+RX
+Text GLabel 8950 4200 0    50   Input ~ 0
 TX
 Wire Wire Line
 	4500 5550 4500 5350
@@ -1619,15 +1619,22 @@ Wire Wire Line
 Wire Wire Line
 	7600 2300 7600 2400
 Text GLabel 7600 1800 2    50   Input ~ 0
-r+
-Text GLabel 7600 2600 2    50   Input ~ 0
-r-
+r
 Wire Wire Line
 	9000 1150 10150 1150
 Wire Wire Line
 	9700 1350 10150 1350
 Text GLabel 9900 1150 1    50   Input ~ 0
-r+
-Text GLabel 10000 1350 3    50   Input ~ 0
-r-
+r
+$Comp
+L power:+5V #PWR0114
+U 1 1 6137FB53
+P 7600 2600
+F 0 "#PWR0114" H 7600 2450 50  0001 C CNN
+F 1 "+5V" H 7615 2773 50  0000 C CNN
+F 2 "" H 7600 2600 50  0001 C CNN
+F 3 "" H 7600 2600 50  0001 C CNN
+	1    7600 2600
+	-1   0    0    1   
+$EndComp
 $EndSCHEMATC
