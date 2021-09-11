@@ -10,6 +10,8 @@ String Data;
 #define M1pin2 3
 #define M2pin1 4
 #define M2pin2 5
+#define pin 7
+
 #define PWM1  10
 #define PWM2  9
 
@@ -40,6 +42,23 @@ void setup() {
 
   pinMode(PWM1, OUTPUT);
   pinMode(PWM2, OUTPUT);
+
+  pinMode(pin, INPUT);
+}
+
+// This function get a digital input from proximity sensor and send it via serial to RPI
+void Check_Item_presence ()
+{
+  bool  state = digitalRead(pin);
+  if (state == HIGH)
+  {
+    Serial.println("item exist");
+  }
+  else
+  {
+    Serial.println("No item found");
+  }
+
 }
 
 void Activate_motors_plastic () //This function activates motors to let plastic go in the repository
@@ -117,6 +136,8 @@ void Sharp_Data() // This function gets the capacity data from the bin then send
 
 void loop()
 {
+
+
   // RECEIVE THE COMMAND FROM RPI
     if(Serial.available()>0){
      Data=Serial.readStringUntil('\n');
@@ -139,6 +160,9 @@ void loop()
                 break;
             case 4:
                 Activate_motors_no_plastic ();
+                break;
+            case 5:
+                Check_Item_presence ();
                 break;
             default:
                 printf("Out of range");

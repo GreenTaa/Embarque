@@ -47,7 +47,7 @@ def ScanQR ():
         key = cv2.waitKey(1)
         if key == 27:
             break
-    cam.release()
+    cap.release()
     cv2.destroyAllWindows()
     return Data
 
@@ -59,6 +59,8 @@ def String_to_Dict(QR_Code_Json):
 def Video_Capture():
     cam = cv2.VideoCapture(0)
 
+    #list fiha asemi tsawer elli bch yetsawrou
+    list_img=[]
 
     cv2.namedWindow("test")
 
@@ -78,15 +80,16 @@ def Video_Capture():
             break
         elif k%256 == 32:
             # SPACE pressed
-            img_name = "plastic{}.jpg".format(img_counter)
+            img_name = "image{}.jpg".format(img_counter)
             cv2.imwrite(img_name, frame)
             print("{} written!".format(img_name))
             img_counter += 1
+            list_img.append(img_name)
 
     cam.release()
 
     cv2.destroyAllWindows()
-    return(img_name)
+    return(list_img)
 
 
 
@@ -96,7 +99,7 @@ def AI_Activate(Info):
         Test(img_Capt)
 
 def Test(img_path):
-
+    
     img = image.load_img(img_path, target_size=(300, 300))
     img = image.img_to_array(img, dtype=np.uint8)
     img=np.array(img)/255.0
@@ -107,11 +110,11 @@ def Test(img_path):
 
     p=model.predict(img[np.newaxis, ...])
 
-    #print("Predictedshape",p.shape)
     print("Maximum Probability: ",np.max(p[0], axis=-1))
     predicted_class = labels[np.argmax(p[0], axis=-1)]
     print("Classified:",predicted_class)
-
+    List_type.append(predicted_class)#list bch n7ottou fiha fiha les differets type des images 
+    return (List_type)
 
 def Collector_Authentif (C_data) :                                              #Authentification script take c_data as collector data
     #print(msg)
@@ -173,6 +176,8 @@ def Command (key) :                                                       #this 
 
 while True :
 
+    Nbre_bottle=0
+    List_type=[]
     QR_code = ScanQR()
     #print ("****")
     #print (QR_code)
@@ -181,8 +186,6 @@ while True :
     #info= {'role': 'supporter', 'id': 'igdh3h4vdjdndocheifu8'}
     #print (info['role'])
     #print(info)
-
-
 
     #Qr = True
     AI_cam= { 'nombre bt':'8' , 'status' : True}                                    #Data received from AI  function
@@ -207,16 +210,27 @@ while True :
 
     if    info['role'] == 'supporter'  :                       #if qr_cam detected qr_data as supporter
 
-        img_path=Video_Capture()
-        Test(img_path)                                        #AI_cam detecting working
+        Nbre_bottle=0
+        List_type=[]
 
-        if AI_cam['status']  :
-            print("working")
-            Post_Supporter_Data (supporter)                  #then upload his data and score to server
-            Command (b"3\n")                                 #and command the PCB to activate motors
-            Send_Status ()                                   # Send bin status after putting plastic in repository
-        else :
-            Command (b"4\n")                                 #if not plastic then reverse direction and reject item
+        list_img=Video_Capture()
+
+        for i in range (len(list_img)):
+            Test(list_img[i])
+             
+        for i in range (len(List_type)):
+            if(List_type[i]=='plastic') :
+                Command (b"3\n")                                 #if plastic command motors to let it go in repository               
+                Nbre_bottle=+1
+                print("im in ...")
+            else :
+                Command (b"4\n")                                 #if not plastic command motors to let it go out the bin
+            
+        print(Nbre_bottle)
+        supporter = {"id_supporter": info['id'] , "Bottles" : Nbre_bottle ,  "id_poubelle" : "612f94218f91188e00efed3e"}  #data from QR  code IF role supporter
+        Post_Supporter_Data (supporter)                  #then upload his data and score to server
+        Send_Status ()                                   # Send bin status after putting plastic in repository
+
     elif  info['role'] == 'collector' :
         if Collector_Authentif (collector):                  #else if its a collector then athentify him from server and get a boolean
             #print(Collector_Authentif (collector))
