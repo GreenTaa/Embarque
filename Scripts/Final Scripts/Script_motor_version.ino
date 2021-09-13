@@ -52,11 +52,7 @@ void Check_Item_presence ()
   bool  state = digitalRead(pin);
   if (state == HIGH)
   {
-    Serial.println("item exist");
-  }
-  else
-  {
-    Serial.println("No item found");
+    Serial.println("Exist");
   }
 
 }

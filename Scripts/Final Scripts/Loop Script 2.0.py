@@ -51,7 +51,7 @@ def ScanQR ():
             break
     cam.release()
     cv2.destroyAllWindows()
-    return Data
+    return (Data)
 
 #This function gets qr data after decoding the binary format as params and returns dictionnary
 def String_to_Dict(QR_Code_Json):
@@ -70,7 +70,7 @@ def img_capture() :
         result = False
     videoCaptureObject.release()
     cv2.destroyAllWindows()
-
+    return(frame)
 
 #This function test the image of the item captured and return if its plastic or not
 def Test(img_path):
@@ -159,7 +159,7 @@ def Receive_Input_State () :
         while stop <= 2:                                                    # 3 iterations needed
             ser.write(b"5\n")                                               # 5 is the command to activate proximity sensor, send 5 to pcb
             line=ser.readline().decode('utf-8').rstrip()                    #get response from PCB
-            #print(line)
+            print(line)
             sleep(1)
             stop+=1                                                         #increment by one
     return(line)
@@ -203,7 +203,7 @@ while True :
 #Receive the proximmity sensor state
         received_state = Receive_Input_State ()
 #while an item exists start ai cam and start running the model
-        while received_state == "item exist" :
+        while received_state == "Exist" :
 
             img_path= img_capture()
             Type = Test(img_path)
@@ -217,11 +217,11 @@ while True :
             else :
                 Command (b"4\n")                                 #if not plastic then reverse direction and reject item
                 #activate_qr=False
-                sleep(4)
+                sleep(2)
 #after 4 seconds if there an element present then redo the loop again and if its not then break it
             received_state = Receive_Input_State ()
 
-#we have number of bottles and supporter id and a static trash bin id 
+#we have number of bottles and supporter id and a static trash bin id
         print(nb_bottles)
         supporter = {"id_supporter": info['id'] , "Bottles" : nb_bottles ,  "id_poubelle" : "612f94218f91188e00efed3e"}  #data from QR  code IF role supporter
         Post_Supporter_Data (supporter)                  #then upload his data and score to server
