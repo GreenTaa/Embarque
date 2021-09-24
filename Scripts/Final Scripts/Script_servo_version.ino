@@ -50,24 +50,24 @@ void Check_Item_presence ()
 }
 
 
-void Activate_serv_plastic()
+void Activate_serv_plastic() // this  function activates servos to let plastic in
 {
-  servo1.write(180);
-  servo2.write(180);
+  servo1.write(45);  // activate both servo same speed same direction
+  servo2.write(45);
   delay(2000);
-  servo1.write(0);
-  servo2.write(0);
+  servo1.write(90);  // servo initial positions
+  servo2.write(90);
   delay (500);
   Serial.println("plastic in repository ...");
 }
 
-void Activate_serv_no_plastic()
+void Activate_serv_no_plastic() // this  function activates servos to let item go out
 {
-  servo1.write(180);
-  servo2.write(180);
+  servo1.write(135);        // activate both servo same speed same direction but reverserd
+  servo2.write(135);
   delay(2000);
-  servo1.write(0);
-  servo2.write(0);
+  servo1.write(90);         // servo initial positions
+  servo2.write(90);
   delay (500);
   Serial.println("Item out ...");
 }
