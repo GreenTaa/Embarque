@@ -41,7 +41,7 @@ void Check_Item_presence ()
 {
   int  state =digitalRead(SENSOR);// read the sensor
 
-      if(state == 0){
+      if(state == 1){
     Serial.println("Exist");
     delay(1000);
 
@@ -53,7 +53,7 @@ void Check_Item_presence ()
 void Activate_serv_plastic() // this  function activates servos to let plastic in
 {
   servo1.write(45);  // activate both servo same speed same direction
-  servo2.write(45);
+  servo2.write(135);
   delay(2000);
   servo1.write(90);  // servo initial positions
   servo2.write(90);
@@ -64,7 +64,7 @@ void Activate_serv_plastic() // this  function activates servos to let plastic i
 void Activate_serv_no_plastic() // this  function activates servos to let item go out
 {
   servo1.write(135);        // activate both servo same speed same direction but reverserd
-  servo2.write(135);
+  servo2.write(45);
   delay(2000);
   servo1.write(90);         // servo initial positions
   servo2.write(90);
@@ -86,6 +86,7 @@ void Sharp_Data()
   int dis=SharpIR.distance();  // this returns the distance to the object you're measuring
   //Serial.println(dis);
   int res = 100 - (dis-20/capacity)*100 ;
+//  int res = 100 - dis
 
   itoa(res, Status, 10);
 
