@@ -29,7 +29,7 @@ SharpIR SharpIR(ir, model);
 
 void setup() {
   // put your setup code here, to run once:
-  Serial.begin(9600);                       // initialize baud rate
+  Serial.begin(115200);                       // initialize baud rate
   servo1.attach(servoPin1);               // attach pin 6 to servo 1
   servo2.attach(servoPin2);               // attach pin 3 to servo 2
   pinMode(solenoidPin, OUTPUT);           //Sets the pin as an output
@@ -41,7 +41,7 @@ void Check_Item_presence ()
 {
   int  state =digitalRead(SENSOR);// read the sensor
 
-      if(state == 1){
+      if(state ==0){
     Serial.println("Exist");
     delay(1000);
 
